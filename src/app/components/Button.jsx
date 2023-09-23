@@ -3,7 +3,7 @@ import React from "react";
 const Button = ({ label }) => {
   return (
     <button className='register-btn'>
-      {label}
+      <p className="text-lg">{label}</p>
     </button>
   );
 };

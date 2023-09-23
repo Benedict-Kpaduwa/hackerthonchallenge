@@ -35,7 +35,7 @@ const Navbar = () => {
     const [show, setShow] = useState(false)
   return (
     <div className='bg-bgcolor relative'>
-        <div className='bg-bgcolor flex flex-col pt-2 pb-5 sm:hidden lg:block md:block'>
+        <div className='bg-bgcolor flex flex-col pt-2 pb-5 sm:hidden lg:block md:hidden'>
             <div className='bg-bgcolor flex flex-row justify-around items-center pt-12 pb-5'>
                 <div>
                     <Link href="/">
@@ -63,7 +63,7 @@ const Navbar = () => {
             </div>
             <Underline/>
         </div>
-        <div className='sm:block lg:hidden md:hidden w-full'>
+        <div className='sm:block lg:hidden md:block w-full'>
             <div className='bg-bgcolor flex flex-row justify-around items-center pt-12 pb-5'>
                 <Image
                     src={logo}
