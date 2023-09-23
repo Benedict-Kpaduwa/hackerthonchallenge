@@ -67,10 +67,6 @@ const Contact = () => {
   }, []);
   return (
     <div className="max-h-screen overflow-x-clip md:block flex flex-col bg-bgcolor">
-      {/* <Navbar
-        additionalStyle="border-0 md:flex hidden"
-        contactStyle="purpleGradientText font-semibold"
-      /> */}
       <Link href="/">
         <div className="md:px-32 md:pl-32 pl-8 md:pt-14 py-6 md:pb-6 md:hidden flex z-10">
           <Image
@@ -203,13 +199,6 @@ const Contact = () => {
             className="absolute md:-right-10 md:-bottom-0 sm:right-20 sm:bottom-48 right-5 bottom-[40%] lg:w-5 md:w-5 w-4"
           />
         </div>
-        {/* <PurpleLightBg
-          style={
-            "md:-left-20 left-0 md:top-20 top-[7rem] md:h-[20rem] h-[7rem]  md:w-[24rem] w-[9rem]"
-          }
-          mobileFilterAdjust={`${isMobile ? "blur(70px)" : "blur(150px)"}`}
-        />
-        <PurpleLightBg style={"-right-20 bottom-20 md:block hidden"} /> */}
 
         {/* ------------------MOBILE SCREEN----------------- */}
         <div className="flex flex-col gap-7 md:hidden self-center relative">
@@ -269,12 +258,8 @@ const Contact = () => {
           {success ? (
             <span className="text-green-500 font-semibold">{success}</span>
           ) : null}
-          <div className="self-center">
-            {/* <GradientBtn
-              text="Submit"
-              submit={handleSumbit}
-              loading={loading}
-            /> */}
+          <div className="self-center" onClick={handleSumbit}>
+            <Button label="Submit"/>
           </div>
           <div className="flex flex-col gap-2 self-center text-center mt-10">
             <span className="textPurple">Share on</span>
