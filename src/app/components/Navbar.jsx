@@ -1,10 +1,8 @@
 "use client";
 import React, { useState } from 'react'
-import logo from "../assets/logo.svg"
 import Image from 'next/image';
 import Button from './Button';
 import Link from 'next/link';
-import Underline from './Underline';
 import hamburg from "../assets/hamburg.svg"
 import close from "../assets/close.svg"
 import closex from "../assets/closex.svg"
@@ -31,96 +29,94 @@ const links = [
     },
   ];
 
-const Navbar = () => {
+const Navbar = ({
+    additionalStyle,
+    contactStyle,
+    regBtn,
+    setOpenMobileNav
+  }) => {
     const [show, setShow] = useState(false)
   return (
-    <div className='bg-bgcolor relative'>
-        <div className='bg-bgcolor flex flex-col pt-2 pb-5 sm:hidden lg:block md:hidden'>
-            <div className='bg-bgcolor flex flex-row justify-around items-center pt-12 pb-5'>
-                <div>
-                    <Link href="/">
-                    <Image
-                        src={logo}
-                        alt="getlinked"
-                        width={171}
-                        height={44}
-                    />
-                </Link>
-                </div>
-                <div className="hidden lg:flex items-center justify-between space-x-24">
-                <ul className="flex space-x-16">
-                    {links.map((link, index) => (
-                    <li key={index}>
-                        <Link href={link.path}>{link.name}</Link>
-                    </li>
-                    ))}
-                </ul>
-                <Link href="/new">
-                        <Button label="Register"/>
-                    </Link>
-                
-                </div>
-            </div>
-            <Underline/>
-        </div>
-        <div className='sm:block lg:hidden md:block w-full'>
-            <div className='bg-bgcolor flex flex-row justify-around items-center pt-12 pb-5'>
-                <Image
-                    src={logo}
-                    alt="getlinked"
-                    width={171}
-                    height={44}
-                />
-                <div onClick={()=>setShow(!show)} className=''>
-                    <Image
-                        src={hamburg}
-                        alt="getlinked"
-                        width={19}
-                        height={14}
-                        className='ml-24 cursor-pointer'
-                    />
-                </div>
+    <div
+    className={`lg:px-24 px-8 lg:pl-32 pl-8 md:pt-14 py-6 md:pb-6 lightBorderBottom flex justify-between backdrop-blur-xl relative z-10 ${additionalStyle}`}
+  >
+    <Link href="/">
+      <div className="font-[ClashDisplay] font-bold md:text-4xl text-xl">
+        get<span className="textPurple">linked</span>
+      </div>
+    </Link>
 
-            </div>
-            <Underline/>
+    <div className="md:flex hidden justify-between border-1 lg:gap-24 gap-4">
+      <ul className="flex items-center lg:gap-10 gap-7">
+        <Link href="/#timeline">
+        <li>Timeline</li>
+        </Link>
+        <Link href="/#overview">
+        <li>Overview</li>
+        </Link>
+        
+        <Link href="/#faq">
+        <li>FAQs</li>
+        </Link>
+        
+        <Link href="/contact">
+          <li className={`${contactStyle}`}>Contact</li>
+        </Link>
+      </ul>
+      <div onClick={() => router.push("/new")}>
+        <div className='pl-10 pt-8'>
+            <Link href="/new">
+                <Button label="Register"/>
+            </Link>
         </div>
-        {
-            show && 
-            <div className='flex flex-col bg-bgcolor w-[348px] h-[492px] absolute top-0 right-0 space-y-10'>
-                <div className='relative flex items-end w-full justify-end p-10'>
-                    <Image
-                        src={close}
-                        alt="getlinked"
-                        width={23}
-                        height={23}
-                        className='ml-24 cursor-pointer'
-                    />
-                    <Image
-                        src={closex}
-                        alt="getlinked"
-                        width={11}
-                        height={11}
-                        className='ml-24 cursor-pointer absolute top-11 right-12'
-                        onClick={()=>setShow(false)}
-                    />
-                </div>
-                <div>
-                <ul className="flex flex-col space-y-10">
-                    {links.map((link, index) => (
-                    <li key={index} className='pl-10 inter'>
-                        <Link href={link.path}>{link.name}</Link>
-                    </li>
-                    ))}
-                </ul>
-                <div className='pl-10 pt-8'>
-                    <Link href="/new">
-                        <Button label="Register"/>
-                    </Link>
-                </div>
-                </div>
-            </div>
-        }
+      </div>
+      <div onClick={()=>setShow(!show)} className='sm:block lg:hidden md:hidden'>
+        <Image
+            src={hamburg}
+            alt="getlinked"
+            width={19}
+            height={14}
+            className='ml-24 cursor-pointer'
+        />
     </div>
+    </div>
+     {
+          show && 
+          <div className='flex flex-col bg-bgcolor w-[348px] h-[492px] absolute top-0 right-0 space-y-10'>
+              <div className='relative flex items-end w-full justify-end p-10'>
+                  <Image
+                      src={close}
+                      alt="getlinked"
+                      width={23}
+                      height={23}
+                      className='ml-24 cursor-pointer'
+                  />
+                  <Image
+                      src={closex}
+                      alt="getlinked"
+                      width={11}
+                      height={11}
+                      className='ml-24 cursor-pointer absolute top-11 right-12'
+                      onClick={()=>setShow(false)}
+                  />
+              </div>
+              <div>
+              <ul className="flex flex-col space-y-10">
+                  {links.map((link, index) => (
+                  <li key={index} className='pl-10 inter'>
+                      <Link href={link.path}>{link.name}</Link>
+                  </li>
+                  ))}
+              </ul>
+              <div className='pl-10 pt-8'>
+                  <Link href="/new">
+                      <Button label="Register"/>
+                  </Link>
+              </div>
+              </div>
+          </div>
+      }
+  </div>
   )
 }
 

@@ -20,6 +20,13 @@ module.exports = {
         button: "rgba(144, 58, 255, 1)",
         line: "rgba(255, 255, 255, 0.18)",
       },
+      screens: {
+        'sm': '600px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      }
     },
   },
   plugins: [],
